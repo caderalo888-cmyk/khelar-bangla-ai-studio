@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Khelar Bangla AI Studio</title>
+<style>
+:root{--bg:#0b1020;--card:#141c31;--text:#f5f7ff;--muted:#aab4cf;--accent:#58e0a5}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0b1020,#172541);color:var(--text);font-family:system-ui,'Noto Sans Bengali',sans-serif}
+main{max-width:1000px;margin:auto;padding:28px 18px 60px}.hero{padding:28px 0 18px}.badge{color:var(--accent);font-weight:700;letter-spacing:.08em}h1{font-size:clamp(2rem,5vw,3.5rem);margin:.3em 0}p{color:var(--muted);line-height:1.7}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}.card{background:rgba(20,28,49,.95);border:1px solid #2a3654;border-radius:18px;padding:22px;box-shadow:0 15px 40px #0002}h2{margin-top:0}label{display:block;margin:14px 0 7px;color:#e7ecff}input,textarea,select{width:100%;padding:12px;border-radius:10px;border:1px solid #3a4868;background:#0d1426;color:white;font:inherit}input[type=file]{padding:9px}button,.button{display:inline-block;background:var(--accent);color:#08150f;font-weight:800;border:0;padding:12px 16px;border-radius:10px;margin-top:16px;cursor:pointer;text-decoration:none}small{color:var(--muted)}.notice{border-left:4px solid var(--accent);padding:10px 14px;background:#172b32;border-radius:8px;margin:16px 0}.flash{background:#44292a;padding:12px;border-radius:10px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+</style></head>
+<body><main>
+<section class="hero"><div class="badge">KHElar BANGLA • AI STUDIO</div><h1>তোমার AI ভিডিও স্টুডিও</h1><p>একই ওয়েবসাইটে স্পোর্টস নিউজ স্ক্রিপ্ট এবং Reels/Shorts-এর জন্য ছবি-ভিত্তিক ভিডিও তৈরি করো।</p>
+<div class="notice">বর্তমান ভার্সনটি আপলোড করা ছবি দিয়ে 9:16 স্লাইডশো ভিডিও বানায়। সরাসরি prompt থেকে নতুন AI-generated video তৈরি করতে আলাদা video-generation model/API সংযুক্ত করতে হবে।</div>
+{% with messages = get_flashed_messages() %}{% if messages %}{% for m in messages %}<div class="flash">{{m}}</div>{% endfor %}{% endif %}{% endwith %}
+</section>
+<div class="grid">
+<section class="card"><h2>⚽ Khelar Bangla Sports AI</h2><p>খবরের বিষয় লিখে বাংলা স্পোর্টস ভিডিওর স্ক্রিপ্টের খসড়া তৈরি করো। প্রকাশের আগে তথ্য যাচাই করবে।</p>
+<form action="/script" method="post"><label>খবরের বিষয়</label><textarea name="topic" rows="3" placeholder="যেমন: বাংলাদেশ ক্রিকেট দলের সর্বশেষ খবর" required></textarea><label>স্ক্রিপ্টের ধরন</label><select name="style"><option value="dramatic">উত্তেজনাপূর্ণ</option><option value="breaking">ব্রেকিং নিউজ</option><option value="emotional">আবেগঘন</option></select><button type="submit">স্ক্রিপ্ট তৈরি করো</button></form></section>
+<section class="card"><h2>🎬 AI Video Maker</h2><p>নিজের ছবি দিয়ে vertical slideshow ভিডিও বানাও। ঐচ্ছিকভাবে voiceover বা music ফাইল যোগ করো।</p>
+<form action="/create-video" method="post" enctype="multipart/form-data"><label>ভিডিওর শিরোনাম</label><input name="video_title" placeholder="যেমন: আজকের ক্রিকেট আপডেট" required><label>ভিডিওতে দেখানোর লেখা</label><textarea name="caption" rows="2" placeholder="ভিডিওর শিরোনাম বা ছোট ক্যাপশন"></textarea><label>ছবি আপলোড (এক বা একাধিক)</label><input type="file" name="images" accept="image/*" multiple required><label>ভয়েসওভার / ব্যাকগ্রাউন্ড অডিও (ঐচ্ছিক)</label><input type="file" name="audio" accept="audio/*"><label>প্রতি ছবির সময় (সেকেন্ড, 3–30)</label><input type="number" name="duration" min="3" max="30" value="5"><small>প্রতিটি ছবি সমান সময় দেখানো হবে। অডিও দিলে ভিডিও অডিও শেষ হলে থামবে।</small><br><button type="submit">ভিডিও তৈরি করো</button></form></section>
+</div>
+<section class="card" style="margin-top:18px"><h2>🧩 পরের ধাপে যোগ করা যাবে</h2><p>Prompt-to-video AI model, স্বয়ংক্রিয় বাংলা TTS, auto captions, login/user accounts, job queue এবং cloud storage। এগুলোর জন্য API বা সার্ভার কনফিগারেশন লাগতে পারে।</p><small>FFmpeg পাওয়া গেছে: {{ 'হ্যাঁ' if ffmpeg else 'না — README.md-তে ইনস্টল নির্দেশনা দেখো' }}</small></section>
+</main></body></html>
